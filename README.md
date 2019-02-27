@@ -24,6 +24,6 @@ WATERMARK="creamy-videos was here" \
 docker run --rm \
 -e FILE_PATH=/static \
 -p 80:80 \
--v ./static:/static \
+-v $PWD/static:/static \
 albinodrought/creamy-static
 ```
