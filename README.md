@@ -1,29 +1,50 @@
-# creamy-static
+# Creamy Static
 
-Barebones web-accessible file directory
+<a href="https://hub.docker.com/r/albinodrought/creamy-static">
+<img alt="albinodrought/creamy-static Docker Pulls" src="https://img.shields.io/docker/pulls/albinodrought/creamy-static">
+</a>
+<a href="https://github.com/AlbinoDrought/creamy-static/blob/master/LICENSE"><img alt="AGPL-3.0 License" src="https://img.shields.io/github/license/AlbinoDrought/creamy-static"></a>
 
-## Building
+
+No-fluff [`pkg/net/http` FileServer](https://golang.org/pkg/net/http/#FileServer) wrapper
+for serving a local directory on the web
+
+## Usage
+
+- `FILE_PATH`: location to load files from, defaults to `./static` (effectively `/static` in container)
+
+- `PORT`: port to listen on, defaults to `80`
+
+- `WATERMARK`: text to show on HTML pages as a watermark, disabled by default
+
+### With Docker
 
 ```sh
-go get
-go build
+docker run --rm -it \
+    -v $(pwd)/foo/bar:/static \
+    -e WATERMARK="creamy-static was here" \
+    albinodrought/creamy-static
 ```
 
-## Running
+### Without Docker
 
 ```sh
 FILE_PATH=./foo/bar \
 PORT=80 \
-WATERMARK="creamy-videos was here" \
+WATERMARK="creamy-static was here" \
 ./creamy-static
 ```
 
-## Running with Docker
+## Building
+
+### With Docker
 
 ```sh
-docker run --rm \
--e FILE_PATH=/static \
--p 80:80 \
--v $PWD/static:/static \
-albinodrought/creamy-static
+docker build -t albinodrought/creamy-static .
+```
+
+### Without Docker
+
+```sh
+go get && go build
 ```
