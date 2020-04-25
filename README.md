@@ -21,6 +21,7 @@ for serving a local directory on the web
 
 ```sh
 docker run --rm -it \
+    -p 80:80 \
     -v $(pwd)/foo/bar:/static \
     -e WATERMARK="creamy-static was here" \
     albinodrought/creamy-static
