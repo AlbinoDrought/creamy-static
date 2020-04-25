@@ -2,8 +2,8 @@ FROM golang:alpine as builder
 
 RUN apk update && apk add git
 
-COPY . $GOPATH/src/bitbucket.org/malonewebdev/creamy-static
-WORKDIR $GOPATH/src/bitbucket.org/malonewebdev/creamy-static
+COPY . $GOPATH/src/github.com/AlbinoDrought/creamy-static
+WORKDIR $GOPATH/src/github.com/AlbinoDrought/creamy-static
 
 RUN go get -d -v
 
