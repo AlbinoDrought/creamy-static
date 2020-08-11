@@ -17,6 +17,10 @@ for serving a local directory on the web
 
 - `WATERMARK`: text to show on HTML pages as a watermark, disabled by default
 
+- `BASIC_AUTH_USERNAME`: enable basic auth with this username
+
+- `BASIC_AUTH_PASSWORD`: enable basic auth with this password
+
 ### With Docker
 
 ```sh

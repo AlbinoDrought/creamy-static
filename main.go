@@ -28,6 +28,8 @@ func main() {
 	}
 
 	watermark := os.Getenv("WATERMARK")
+	basicAuthUsername := os.Getenv("BASIC_AUTH_USERNAME")
+	basicAuthPassword := os.Getenv("BASIC_AUTH_PASSWORD")
 
 	fs := http.FileServer(http.Dir(path))
 
@@ -37,6 +39,10 @@ func main() {
 			Handler:   fs,
 			watermark: watermark,
 		}
+	}
+
+	if len(basicAuthUsername) > 0 || len(basicAuthPassword) > 0 {
+		fs = basicAuthMiddleware(basicAuthUsername, basicAuthPassword, fs)
 	}
 
 	http.Handle("/", fs)
